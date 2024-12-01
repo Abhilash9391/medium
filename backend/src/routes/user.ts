@@ -13,8 +13,7 @@ export const userRouter = new Hono<{
 
   userRouter.post('/signup', async (c) => {
 	const prisma = new PrismaClient({
-
-		datasourceUrl: c.env?.DATABASE_URL	,
+          datasourceUrl: c.env?.DATABASE_URL	,
 	}).$extends(withAccelerate());
 
 	const body = await c.req.json();
@@ -25,11 +24,12 @@ export const userRouter = new Hono<{
 				password: body.password
 			}
 		});
-    
-		const jwt = await sign({ id: user.id },c.env.JWT_SECRET);
+    console.log(c.env.JWT_SECRET)
+		const jwt = await sign({ id: user.id },"jwtsecret");
 		return c.json({ jwt });
 	} catch(e) {
 		c.status(403);
+        console.log(e)
 		return c.json({ error: "error while signing up" });
 	}
 })
@@ -58,6 +58,7 @@ userRouter.post('/signin', async (c) => {
 		const jwt = await sign({ id: user.id },c.env.JWT_SECRET);
 		return c.json({ jwt });
 	} catch(e) {
+        console.log(e)
 		c.status(403);
 		return c.json({ error: "error while signing up" });
 	}
