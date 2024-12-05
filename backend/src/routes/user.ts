@@ -24,7 +24,7 @@ export const userRouter = new Hono<{
 				password: body.password
 			}
 		});
-    console.log(c.env.JWT_SECRET)
+   
 		const jwt = await sign({ id: user.id },"jwtsecret");
 		return c.json({ jwt });
 	} catch(e) {
@@ -55,7 +55,7 @@ userRouter.post('/signin', async (c) => {
       })
     }
     
-		const jwt = await sign({ id: user.id },c.env.JWT_SECRET);
+		const jwt = await sign({ id: user.id },"jwtsecret");
 		return c.json({ jwt });
 	} catch(e) {
         console.log(e)
