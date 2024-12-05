@@ -1,8 +1,8 @@
-import {useState} from 'react'
+import {ChangeEvent, useState} from 'react'
 import { SignupInput } from "@100xdevs/medium-common";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { BACKEND_URL } from "../config";
+//import { BACKEND_URL } from "../config";
 
 
 export const Auth = ({ type }: { type: "signup" | "signin" }) => {
@@ -65,7 +65,7 @@ return (
             </div>
         </div>
     </div>
-}
+
     
     
     
