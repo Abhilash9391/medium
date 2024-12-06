@@ -2,7 +2,7 @@ import {ChangeEvent, useState} from 'react'
 import { SignupInput } from "@100xdevs/medium-common";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-//import { BACKEND_URL } from "../config";
+import { BACKEND_URL } from "../config.ts";
 
 
 export const Auth = ({ type }: { type: "signup" | "signin" }) => {
@@ -12,7 +12,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
         username: "",
         password: ""
     });
-
+     
 
     async function sendRequest() {
         try {
@@ -21,10 +21,12 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
             localStorage.setItem("token", jwt);
             navigate("/blogs");
         } catch(e) {
-            alert("Error while signing up")
+            alert(e)
             // alert the user here that the request failed
         }
     }
+
+    
 return (
     <>
     <div className="h-screen flex justify-center flex-col">
@@ -42,19 +44,19 @@ return (
                     </div>
                 </div>
                 <div className="pt-8">
-                    {type === "signup" ? <LabelledInput label="Name" placeholder="Harkirat Singh..." onChange={(e) => {
+                    {type === "signup" ? <LabelledInput label="Name" placeholder="enter name ....." onChange={(e) => {
                         setPostInputs({
                             ...postInputs,
                             name: e.target.value
                         })
                     }} /> : null}
-                    <LabelledInput label="Username" placeholder="harkirat@gmail.com" onChange={(e) => {
+                    <LabelledInput label="Username" placeholder="enter usename" onChange={(e) => {
                         setPostInputs({
                             ...postInputs,
                             username: e.target.value
                         })
                     }} />
-                    <LabelledInput label="Password" type={"password"} placeholder="123456" onChange={(e) => {
+                    <LabelledInput label="Password" type={"password"} placeholder="enter password" onChange={(e) => {
                         setPostInputs({
                             ...postInputs,
                             password: e.target.value

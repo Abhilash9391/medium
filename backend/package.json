@@ -5,8 +5,10 @@
     "deploy": "wrangler deploy --minify"
   },
   "dependencies": {
+    "@100xdevs/medium-common": "^1.0.0",
     "@prisma/client": "^6.0.0",
     "@prisma/extension-accelerate": "^1.2.1",
+    "cors": "^2.8.5",
     "hono": "^4.6.12",
     "prisma": "^6.0.0"
   },
