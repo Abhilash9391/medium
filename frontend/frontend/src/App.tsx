@@ -3,7 +3,7 @@ import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import { Signup } from './pages/Signup.tsx'
 import { Signin } from './pages/Signin.tsx'
 import { Blog } from './pages/Blog.tsx'
-import { Blogs } from './pages/Blogs.tsx'
+import { Blogs } from './pages/blogs.tsx'
 import './App.css'
 
 function App() {
